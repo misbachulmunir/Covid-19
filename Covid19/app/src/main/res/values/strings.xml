@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Covid-19</string>
+    <string name="Konfirmasi_baru">Konfirmasi Terbaru</string>
+    <string name="tanggal">Tanggal</string>
+    <string name="baru_sembuh">Baru Sembuh</string>
+    <string name="total_sembuh">Total Sembuh</string>
+    <string name="total_meninggal">Total Meninggal</string>
+    <string name="kematian_baru">Kematian Baru</string>
+    <string name="total_konfirmasi">Total Konfirmasi</string>
+
+</resources>
