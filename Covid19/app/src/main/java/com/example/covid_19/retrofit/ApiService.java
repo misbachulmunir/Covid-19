@@ -8,5 +8,7 @@ import retrofit2.http.Query;
 
 public interface ApiService {
     @GET ("summary")
-    Call<Response>ambildata();
+    Call<Response>ambildata(
+            @Query("")String api
+    );
 }

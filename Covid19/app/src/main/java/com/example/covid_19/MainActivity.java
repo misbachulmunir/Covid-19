@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.covid_19.model.CountriesItem;
@@ -21,6 +22,7 @@ import retrofit2.Callback;
 public class MainActivity extends AppCompatActivity {
     List<CountriesItem> datacovid=new ArrayList<>();
     RecyclerView recicle;
+    private static final String TAG = "MainActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
 //        for (int i = 0; i < 20; i++) {
 //            datacovid.add(contoh);
 //        }
-        getDataOnline();
+        Log.d(TAG, "data"+ R.id.id_baru_sembuh);
+       getDataOnline();
 
         recicle.setAdapter(new adaptercovid(MainActivity.this,datacovid));
         recicle.setLayoutManager(new LinearLayoutManager(MainActivity.this));
@@ -53,10 +56,11 @@ public class MainActivity extends AppCompatActivity {
         final ProgressDialog progress=new ProgressDialog(MainActivity.this);
         progress.setMessage("Tunggu Sebentar...");
         progress.show();
-        Call<Response>request= RetrofitCOnfig.getApiservice().ambildata();
+        Call<Response>request= RetrofitCOnfig.getApiservice().ambildata("");
         request.enqueue(new Callback<Response>() {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                progress.dismiss();
                 if (response.isSuccessful()){
                     datacovid=response.body().getCountries();
                     recicle.setAdapter(new adaptercovid(MainActivity.this,datacovid));
