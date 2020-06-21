@@ -6,7 +6,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.covid_19.model.CountriesItem;
@@ -22,12 +29,17 @@ import retrofit2.Callback;
 public class MainActivity extends AppCompatActivity {
     List<CountriesItem> datacovid=new ArrayList<>();
     RecyclerView recicle;
+
     private static final String TAG = "MainActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recicle=findViewById(R.id.recyclerView);
+
+
+
+
 
 //        Model contoh=new Model();
 //        contoh.setCountry("Indonesia");
@@ -50,6 +62,28 @@ public class MainActivity extends AppCompatActivity {
         recicle.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
 
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_beranda,menu);
+        MenuItem item=menu.findItem(R.id.id_cari);
+        SearchView searchView=(SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     private void getDataOnline() {

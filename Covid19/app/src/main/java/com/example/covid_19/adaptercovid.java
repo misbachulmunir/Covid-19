@@ -3,24 +3,24 @@ package com.example.covid_19;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.covid_19.model.CountriesItem;
-import com.example.covid_19.model.Response;
 
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class adaptercovid extends RecyclerView.Adapter<adaptercovid.MyVieHolder> {
+public class adaptercovid extends RecyclerView.Adapter<adaptercovid.MyVieHolder> implements Filterable {
     public static final String DATA_CORONA = "data_corona_country";
     public static final String DATA_EXTRA = "data_extra_country";
     public Context context;
@@ -53,7 +53,7 @@ public class adaptercovid extends RecyclerView.Adapter<adaptercovid.MyVieHolder>
     holder.itemView.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent pindah=new Intent(context,BerandaActivity.class);
+            Intent pindah=new Intent(context, DetailActifity.class);
             Bundle bundle=new Bundle();
             bundle.putParcelable(DATA_CORONA, Parcels.wrap(data.get(position)));
             pindah.putExtra(DATA_EXTRA,bundle);
@@ -68,6 +68,15 @@ public class adaptercovid extends RecyclerView.Adapter<adaptercovid.MyVieHolder>
     public int getItemCount() {
         return data.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return null;
+    }
+    
+
+
+
 
     public class MyVieHolder extends RecyclerView.ViewHolder {
            TextView txtcountry;

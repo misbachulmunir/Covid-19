@@ -14,13 +14,21 @@
         <activity
             android:name=".BerandaActivity"
             android:label="@string/title_activity_beranda"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity
+            android:name=".DetailActifity"
+            android:label="@string/title_activity_beranda"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
     </application>
 
