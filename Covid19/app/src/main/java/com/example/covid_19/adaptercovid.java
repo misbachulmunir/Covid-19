@@ -3,6 +3,7 @@ package com.example.covid_19;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,8 @@ import org.parceler.Parcels;
 import java.util.ArrayList;
 import java.util.List;
 
-public class adaptercovid extends RecyclerView.Adapter<adaptercovid.MyVieHolder> implements Filterable {
+public class adaptercovid extends RecyclerView.Adapter<adaptercovid.MyVieHolder>  {
+    private static final String TAG = "adaptercovid";
     public static final String DATA_CORONA = "data_corona_country";
     public static final String DATA_EXTRA = "data_extra_country";
     public Context context;
@@ -59,6 +61,8 @@ public class adaptercovid extends RecyclerView.Adapter<adaptercovid.MyVieHolder>
             pindah.putExtra(DATA_EXTRA,bundle);
             context.startActivity(pindah);
 
+            Log.d(TAG, "Posisi"+position);
+
         }
     });
 
@@ -68,12 +72,31 @@ public class adaptercovid extends RecyclerView.Adapter<adaptercovid.MyVieHolder>
     public int getItemCount() {
         return data.size();
     }
-
-    @Override
-    public Filter getFilter() {
-        return null;
-    }
-    
+//    //untuk pencarian
+//    @Override
+//    public Filter getFilter() {
+//        return filter;
+//    }
+//    Filter filter =new Filter() {
+//        @Override
+//        protected FilterResults performFiltering(CharSequence constraint) {
+//             List<CountriesItem> filteredlist=new ArrayList<>();
+//             if(constraint.toString().isEmpty()){
+//                 filteredlist.addAll(data);
+//             }else {
+//                 for (String covid:data){
+//
+//                 }
+//             }
+//
+//             return null;
+//        }
+//
+//        @Override
+//        protected void publishResults(CharSequence constraint, FilterResults results) {
+//
+//        }
+//    };
 
 
 
